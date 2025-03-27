@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixelPerfect AI - Enhance Your Images with Artificial Intelligence</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #6c63ff;
+            --secondary-color: #4d44db;
+            --accent-color: #ff6584;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --gray-color: #6c757d;
+            --light-gray: #e9ecef;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--dark-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3, h4 {
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn.primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn.primary:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .btn.secondary {
+            background-color: white;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+        }
+
+        .btn.secondary:hover {
+            background-color: var(--light-gray);
+        }
+
+        .btn.large {
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding-bottom: 4rem;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav ul li a {
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            padding: 3rem 0;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark-color);
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: var(--gray-color);
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .hero-image {
+            flex: 1;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .features h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            padding: 2rem;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            padding: 5rem 0;
+            background-color: var(--light-gray);
+            text-align: center;
+        }
+
+        .how-it-works h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 200px;
+            padding: 1.5rem;
+        }
+
+        .step .number {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+
+        .demo-area {
+            display: flex;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .before, .after {
+            flex: 1;
+        }
+
+        .before h4, .after h4 {
+            margin-bottom: 1rem;
+        }
+
+        .before img, .after img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .pricing h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .pricing-cards {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .pricing-card {
+            flex: 1;
+            min-width: 280px;
+            max-width: 350px;
+            padding: 2rem;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .pricing-card.popular {
+            border: 2px solid var(--primary-color);
+            transform: scale(1.05);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: var(--gray-color);
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .pricing-card ul li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .pricing-card ul li::before {
+            content: "✓";
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .testimonials h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial {
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .quote {
+            font-style: italic;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .quote::before, .quote::after {
+            content: '"';
+            font-size: 2rem;
+            color: var(--primary-color);
+            opacity: 0.3;
+        }
+
+        .author {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 5rem 0;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 4rem 0 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icons img {
+            width: 30px;
+            height: 30px;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-icons img:hover {
+            opacity: 1;
+        }
+
+        .copyright {
+            text-align: center;
+            padding: 1.5rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: var(--gray-color);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .cta-buttons {
+                justify-content: center;
+            }
+            
+            .demo-area {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">PixelPerfect AI</div>
+            <ul>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#" class="btn">Try for Free</a></li>
+            </ul>
+        </nav>
+        <div class="hero">
+            <div class="hero-text">
+                <h1>Transform Your Images with AI Magic</h1>
+                <p>Enhance resolution, remove noise, restore colors, and bring old photos back to life with our advanced AI technology.</p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn primary">Enhance Images Now</a>
+                    <a href="#" class="btn secondary">See Examples</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <!-- Placeholder for before/after image -->
+                <div style="width: 100%; height: 300px; background-color: #ddd; border-radius: 10px; display: flex; justify-content: center; align-items: center;">
+                    Before/After Example Image
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="features" class="features">
+        <h2>Powerful AI Image Enhancement Features</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="icon">🔍</div>
+                <h3>Super Resolution</h3>
+                <p>Increase image resolution up to 4x without losing quality.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">🎨</div>
+                <h3>Color Restoration</h3>
+                <p>Bring faded colors back to life in old photographs.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">🧹</div>
+                <h3>Noise Reduction</h3>
+                <p>Remove grain and digital noise from low-light photos.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">👤</div>
+                <h3>Face Enhancement</h3>
+                <p>Sharpen and improve facial features in portraits.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="how-it-works">
+        <h2>How PixelPerfect AI Works</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="number">1</div>
+                <h3>Upload Your Image</h3>
+                <p>Drag and drop your photo or select from your device.</p>
+            </div>
+            <div class="step">
+                <div class="number">2</div>
+                <h3>Choose Enhancements</h3>
+                <p>Select the improvements you want to apply.</p>
+            </div>
+            <div class="step">
+                <div class="number">3</div>
+                <h3>AI Processing</h3>
+                <p>Our algorithms work their magic in seconds.</p>
+            </div>
+            <div class="step">
+                <div class="number">4</div>
+                <h3>Download Result</h3>
+                <p>Get your enhanced image in high quality.</p>
+            </div>
+        </div>
+        <div class="demo-area">
+            <div class="before">
+                <h4>Original Image</h4>
+                <div style="width: 100%; height: 200px; background-color: #ccc; border-radius: 10px; display: flex; justify-content: center; align-items: center;">
+                    Original Image Placeholder
+                </div>
+            </div>
+            <div class="after">
+                <h4>Enhanced Image</h4>
+                <div style="width: 100%; height: 200px; background-color: #ccc; border-radius: 10px; display: flex; justify-content: center; align-items: center;">
+                    Enhanced Image Placeholder
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+        <h2>Simple, Transparent Pricing</h2>
+        <div class="pricing-cards">
+            <div class="pricing-card">
+                <h3>Free</h3>
+                <div class="price">$0</div>
+                <ul>
+                    <li>5 enhancements per month</li>
+                    <li>Standard resolution</li>
+                    <li>Watermarked results</li>
+                </ul>
+                <a href="#" class="btn">Get Started</a>
+            </div>
+            <div class="pricing-card popular">
+                <div class="popular-badge">Most Popular</div>
+                <h3>Pro</h3>
+                <div class="price">$9.99<span>/month</span></div>
+                <ul>
+                    <li>100 enhancements per month</li>
+                    <li>High resolution (4K)</li>
+                    <li>No watermark</li>
+                    <li>Priority processing</li>
+                </ul>
+                <a href="#" class="btn primary">Subscribe Now</a>
+            </div>
+            <div class="pricing-card">
+                <h3>Enterprise</h3>
+                <div class="price">Custom</div>
+                <ul>
+                    <li>Unlimited enhancements</li>
+                    <li>Ultra HD resolution</li>
+                    <li>Batch processing</li>
+                    <li>API access</li>
+                    <li>Dedicated support</li>
+                </ul>
+                <a href="#" class="btn">Contact Sales</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <h2>What Our Users Say</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial">
+                <div class="quote">I restored my grandparents' wedding photos and they look like they were taken yesterday. The results brought tears to our family's eyes.</div>
+                <div class="author">- Sarah J., Photographer</div>
+            </div>
+            <div class="testimonial">
+                <div class="quote">As a real estate agent, high-quality photos are crucial. This tool helps me make my listings stand out with minimal effort.</div>
+                <div class="author">- Michael T., Realtor</div>
+            </div>
+            <div class="testimonial">
+                <div class="quote">The face enhancement feature is incredible for my portrait photography business. Saves me hours of manual retouching.</div>
+                <div class="author">- Lisa M., Portrait Photographer</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <h2>Ready to Transform Your Images?</h2>
+        <p>Join thousands of users who are enhancing their photos with AI.</p>
+        <a href="#" class="btn primary large">Start Enhancing for Free</a>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>PixelPerfect AI</h4>
+                <p>The most advanced AI image enhancement platform.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <div class="social-icons">
+                    <a href="#">Twitter</a>
+                    <a href="#">Facebook</a>
+                    <a href="#">Instagram</a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2023 PixelPerfect AI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Image upload and enhancement demo functionality
+            const imageUpload = document.createElement('input');
+            imageUpload.type = 'file';
+            imageUpload.accept = 'image/*';
+            imageUpload.style.display = 'none';
+            document.body.appendChild(imageUpload);
+
+            const uploadButtons = document.querySelectorAll('.btn.primary, .btn.secondary');
+            uploadButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    if (this.textContent.includes('Enhance')) {
+                        e.preventDefault();
+                        imageUpload.click();
+                    }
+                });
+            });
+
+            imageUpload.addEventListener('change', function(e) {
+                if (e.target.files && e.target.files[0]) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        // In a real app, you would send this to your AI backend
+                        // For demo purposes, we'll just show the same image
+                        alert('Image uploaded! In a real implementation, this would send to our AI enhancement service.');
+                        
+                        // Show before/after comparison
+                        const beforeAfterContainer = document.querySelector('.hero-image');
+                        beforeAfterContainer.innerHTML = `
+                            <div style="width: 100%; display: flex; gap: 10px;">
+                                <div style="flex: 1; border: 2px solid #ccc; padding: 5px; border-radius: 5px;">
+                                    <div style="font-size: 12px; text-align: center; margin-bottom: 5px;">Before</div>
+                                    <img src="${event.target.result}" style="width: 100%; border-radius: 5px;">
+                                </div>
+                                <div style="flex: 1; border: 2px solid #4CAF50; padding: 5px; border-radius: 5px;">
+                                    <div style="font-size: 12px; text-align: center; margin-bottom: 5px;">After</div>
+                                    <img src="${event.target.result}" style="width: 100%; border-radius: 5px; filter: contrast(1.1) saturate(1.1);">
+                                </div>
+                            </div>
+                        `;
+                    };
+                    reader.readAsDataURL(e.target.files[0]);
+                }
+            });
+
+            // Animation on scroll
+            const animateOnScroll = function() {
+                const elements = document.querySelectorAll('.feature-card, .step, .pricing-card, .testimonial');
+                
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.3;
+                    
+                    if (elementPosition < screenPosition) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+
+            // Set initial state for animation
+            document.querySelectorAll('.feature-card, .step, .pricing-card, .testimonial').forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'all 0.5s ease';
+            });
+
+            window.addEventListener('scroll', animateOnScroll);
+            animateOnScroll(); // Run once on load
+        });
+    </script>
+</body>
+</html>
